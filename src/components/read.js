@@ -12,12 +12,13 @@ export class Read extends React.Component {
 
     componentDidMount() {
 
-        axios.get('https://jsonblob.com/api/jsonblob/520c3b5e-0312-11eb-a6af-cbf00d776032')
+//just replace the new url
+        axios.get('http://localhost:4000/api/movies')
             .then((Response) => {
-                    this.setState({ movies: Response.data.Search })
+                    this.setState({ movies: Response.data.movies })//add the movies to acces to movies data because in data we have only movies option.
                 })
-            .catch((error)=>{
-                console.log(error)
+            .catch((err)=>{
+                console.log(err)
             });
     }
     render() {

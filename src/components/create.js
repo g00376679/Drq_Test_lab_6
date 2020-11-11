@@ -1,5 +1,6 @@
 import React from 'react';
-
+//import axios this http client talk to web
+import axios from 'axios';
 
 export class Create extends React.Component {
 
@@ -42,6 +43,22 @@ Year: e.target.value
     onSubmit(e) {
         e.preventDefault();
         alert("Movie: " + this.state.Title + "" + this.state.Year +"" +this.state.Poster);
+        //make a object to retrieve the value
+        const newMovie ={
+            title: this.state.Title,
+            year: this.state.Year,
+            poster: this.state.Poster
+        }
+        axios.post('http://localhost:4000/api/movies',newMovie)
+        .then((res)=>{
+        console.log(res);
+        })
+        
+        // if any error happens it will catch it
+        .catch((err)=>{
+            console.log(err);
+
+        });
     }
     render() {
         return (
